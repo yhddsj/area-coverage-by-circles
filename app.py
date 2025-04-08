@@ -67,7 +67,8 @@ if center_lat and center_lon and R_big and r:
         folium_static(m)
 
         df = pd.DataFrame(circle_centers, columns=["Широта", "Долгота"])
-        st.download_button("Скачать координаты центров локальных областей (CSV)", df.to_csv(index=False), file_name="centers.csv", mime="text/csv")
+        csv_data = df.to_csv(index=False, sep=';', encoding='utf-8-sig')
+        st.download_button("Скачать координаты центров локальных областей(CSV)", csv_data, file_name="координаты_кругов.csv", mime="text/csv")
 
     except ValueError:
         st.error("Пожалуйста, введите корректные числовые значения.")
