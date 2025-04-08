@@ -73,7 +73,9 @@ if center_lat and center_lon and R_big and r:
 
         # Создаём строку с результатом
         output_data = "\n".join(formatted_coords)
-
+        
+       # Кнопка для скачивания с нужным форматом
+        st.download_button("Скачать координаты центров локальных областей(TXT)", output_data, file_name="координаты_кругов.txt", mime="text/plain")
 
     except ValueError:
         st.error("Пожалуйста, введите корректные числовые значения.")
