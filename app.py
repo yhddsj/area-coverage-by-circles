@@ -69,7 +69,7 @@ if center_lat and center_lon and R_big and r:
         # Формируем вывод в формате: Номер:r km: Широта, Долгота
         formatted_coords = []
         for i, (lat, lon) in enumerate(circle_centers, start=1):
-            formatted_coords.append(f"{i}:{r}km: {lat}, {lon}")
+            formatted_coords.append(f"{i}:{int(r)}km: {lat}, {lon}")
 
         # Создаём строку с результатом
         output_data = "\n".join(formatted_coords)
