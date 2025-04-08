@@ -66,9 +66,14 @@ if center_lat and center_lon and R_big and r:
 
         folium_static(m)
 
-        df = pd.DataFrame(circle_centers, columns=["Latitude", "Longitude"])
-        csv_data = df.to_csv(index=False, sep=';', encoding='cp1251')
-        st.download_button("Скачать координаты центров локальных областей(CSV)", csv_data, file_name="координаты_кругов.csv", mime="text/csv")
+        # Формируем вывод в формате: Номер:r km: Широта, Долгота
+        formatted_coords = []
+        for i, (lat, lon) in enumerate(circle_centers, start=1):
+            formatted_coords.append(f"{i}:{r}km: {lat}, {lon}")
+
+        # Создаём строку с результатом
+        output_data = "\n".join(formatted_coords)
+
 
     except ValueError:
         st.error("Пожалуйста, введите корректные числовые значения.")
